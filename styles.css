@@ -6,30 +6,44 @@ body {
 }
 
 header {
-    text-align: center; /* Center align the text */
-    margin: 20px 0; /* Add margin for spacing */
+    text-align: center;
+    margin: 20px 0;
 }
 
 h1 {
-    font-size: calc(2em + 2vw); /* Larger font size */
+    font-size: 2em; 
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 40px; 
 }
 
 .map-section {
-    display: flex;
-    width: 100%;
     max-width: 800px;
     margin-bottom: 20px;
-    align-items: center;
+    text-align: center; 
 }
 
 h2 {
-    font-size: calc(1.5em + 1vw);
+    font-size: 1.5em;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 p {
-    font-size: calc(1em + 0.5vw);
+    font-size: 1em;
     margin-bottom: 10px;
+    text-align: justify; 
+}
+
+figure {
+    margin: 0 auto; 
+    max-width: 100%; 
+    height: auto; 
 }
 
 .map-content {
@@ -38,4 +52,5 @@ p {
     padding: 10px;
     overflow-x: auto;
     white-space: pre-wrap;
+    text-align: left; /
 }
