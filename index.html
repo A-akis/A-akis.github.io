@@ -3,22 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cost of Living and Salary Comparison by City</title>
-    <!-- Vega & Vega-Lite Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <title>JSON Maps from GitHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Cost of Living and Salary Comparison by City</h1>
-    <div id="vis"></div>
+    <header>
+        <h1>JSON Maps from GitHub</h1>
+    </header>
 
-    <script type="text/javascript">
-        const specUrl = 'https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/map_plot.json'; // Replace with your JSON file URL
+    <div class="container">
+        <div class="map-section" id="map1">
+            <h2>Map 1</h2>
+            <p>This is a description for Map 1.</p>
+            <div class="map-content"></div>
+        </div>
+        <div class="map-section" id="map2">
+            <h2>Map 2</h2>
+            <p>This is a description for Map 2.</p>
+            <div class="map-content"></div>
+        </div>
+        <div class="map-section" id="map3">
+            <h2>Map 3</h2>
+            <p>This is a description for Map 3.</p>
+            <div class="map-content"></div>
+        </div>
+        <div class="map-section" id="map4">
+            <h2>Map 4</h2>
+            <p>This is a description for Map 4.</p>
+            <div class="map-content"></div>
+        </div>
+        <div class="map-section" id="map5">
+            <h2>Map 5</h2>
+            <p>This is a description for Map 5.</p>
+            <div class="map-content"></div>
+        </div>
+    </div>
 
-        vegaEmbed('#vis', specUrl).then(function(result) {
-            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        }).catch(console.error);
+    <script>
+        const maps = [
+            {id: 'map1', url: 'https://raw.githubusercontent.com/user/repo/branch/map1.json'},
+            {id: 'map2', url: 'https://raw.githubusercontent.com/user/repo/branch/map2.json'},
+            {id: 'map3', url: 'https://raw.githubusercontent.com/user/repo/branch/map3.json'},
+            {id: 'map4', url: 'https://raw.githubusercontent.com/user/repo/branch/map4.json'},
+            {id: 'map5', url: 'https://raw.githubusercontent.com/user/repo/branch/map5.json'}
+        ];
+
+        maps.forEach(map => {
+            fetch(map.url)
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector(`#${map.id} .map-content`).innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => console.error('Error loading map:', error));
+        });
     </script>
 </body>
 </html>
