@@ -1,0 +1,100 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Food Prices Comparison",
+  "data": {
+    "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "country_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Australia",
+          "Austria",
+          "Belgium",
+          "Bosnia And Herzegovina",
+          "Brazil",
+          "Bulgaria",
+          "Canada",
+          "China",
+          "Colombia",
+          "Croatia",
+          "Cyprus",
+          "Czech Republic",
+          "Denmark",
+          "Finland",
+          "France",
+          "Germany",
+          "Greece",
+          "Hungary",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Japan",
+          "Malaysia",
+          "Mexico",
+          "Morocco",
+          "Netherlands",
+          "New Zealand",
+          "North Macedonia",
+          "Norway",
+          "Pakistan",
+          "Philippines",
+          "Poland",
+          "Portugal",
+          "Romania",
+          "Russia",
+          "Saudi Arabia",
+          "Serbia",
+          "South Africa",
+          "Spain",
+          "Sweden",
+          "Switzerland",
+          "Taiwan",
+          "Tunisia",
+          "Turkey",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom",
+          "United States"
+        ],
+        "name": "Select Country: "
+      },
+      "value": "Romania"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.country == country_selection"},
+    {
+      "fold": ["x8", "x9", "x10", "x11", "x12", "x13", "x14", "x15"],
+      "as": ["item", "price"]
+    },
+    {
+      "calculate": "datum.item == 'x8' ? 'Water' : datum.item == 'x9' ? 'Milk' : datum.item == 'x10' ? 'Loaf of Bread' : datum.item == 'x11' ? 'Rice' : datum.item == 'x12' ? 'Dozen Eggs' :datum.item == 'x13' ? 'Block of Cheese' :datum.item == 'x14' ? 'Chicken Fillets ' :datum.item == 'x15' ? 'Round Beef' : null",
+      "as": "item_name"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "city", "type": "nominal"},
+    "y": {"field": "price", "type": "quantitative"},
+    "color": {
+      "field": "item_name",
+      "type": "nominal",
+      "legend": {"title": "Food Item"},
+      "scale": {"scheme": "pinkyellowgreen"}
+    },
+    "tooltip": [
+      {"field": "city", "type": "nominal"},
+      {"field": "country", "type": "nominal"},
+      {"field": "item", "type": "nominal"},
+      {"field": "price", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}

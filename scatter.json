@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Housing Costs vs. Average Salary",
+  "width": 600,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df-continents.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "housing_type",
+      "bind": {
+        "input": "select",
+        "options": ["x29", "x30", "x31", "x32", "x34", "x35", "x28"],
+        "labels": [
+          "Montly Pass",
+          "Taxi Start Tariff",
+          "Taxi 1km Price",
+          "Taxi 1h of Wainting",
+          "Volkswagen Golf 1.4",
+          "Toyota Corolla Sedan",
+          "One Way Ticket"
+        ],
+        "name": "Select Fee: "
+      },
+      "value": "x28"
+    }
+  ],
+  "transform": [{"calculate": "datum[housing_type]", "as": "Choosen Data"}],
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Choosen Data", "type": "quantitative"},
+    "y": {"field": "x33", "type": "quantitative", "title": "Gasoline Price"},
+    "color": {
+      "field": "continent",
+      "type": "nominal",
+      "title": "Country",
+      "scale": {"scheme": "darkgreen"}
+    },
+    "tooltip": [
+      {"field": "city", "type": "nominal", "title": "City"},
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "Choosen Data", "type": "quantitative"},
+      {"field": "x33", "type": "quantitative", "title": "Gasoline Price"}
+    ]
+  },
+  "title": "Gasoline Price vs. Other Transportation Fees",
+  "config": {}
+}

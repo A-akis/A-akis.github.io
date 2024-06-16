@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Grouped Box Plot for Housing Costs with Outlier Cities",
+  "data": {
+    "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df-continents.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": {"type": "boxplot", "extent": 1.5, "color": "green"},
+  "encoding": {
+    "x": {"field": "country", "type": "nominal", "title": "Countries"},
+    "y": {"field": "x7", "type": "quantitative", "title": "Price "},
+    "color": {"field": "continent", "type": "nominal", "title": "Continent"},
+    "tooltip": [
+      {"field": "city", "type": "nominal", "title": "City"},
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "continent", "type": "nominal", "title": "Continent"},
+      {"field": "x7", "type": "quantitative", "title": "Coca Cola bottle price"}
+    ]
+  },
+  "config": {}
+}

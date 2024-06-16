@@ -1,0 +1,101 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Cost of Living Comparison",
+  "width": 400,
+  "height": 200,
+  "data": {
+    "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "country_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Australia",
+          "Austria",
+          "Belgium",
+          "Bosnia And Herzegovina",
+          "Brazil",
+          "Bulgaria",
+          "Canada",
+          "China",
+          "Colombia",
+          "Croatia",
+          "Cyprus",
+          "Czech Republic",
+          "Denmark",
+          "Finland",
+          "France",
+          "Germany",
+          "Greece",
+          "Hungary",
+          "India",
+          "Indonesia",
+          "Iran",
+          "Ireland",
+          "Israel",
+          "Italy",
+          "Japan",
+          "Malaysia",
+          "Mexico",
+          "Morocco",
+          "Netherlands",
+          "New Zealand",
+          "North Macedonia",
+          "Norway",
+          "Pakistan",
+          "Philippines",
+          "Poland",
+          "Portugal",
+          "Romania",
+          "Russia",
+          "Saudi Arabia",
+          "Serbia",
+          "South Africa",
+          "Spain",
+          "Sweden",
+          "Switzerland",
+          "Taiwan",
+          "Tunisia",
+          "Turkey",
+          "Ukraine",
+          "United Arab Emirates",
+          "United Kingdom",
+          "United States"
+        ],
+        "name": "Select Country: "
+      },
+      "value": "Romania"
+    }
+  ],
+  "transform": [
+    {"filter": "datum.country == country_selection"},
+    {
+      "fold": ["x16", "x17", "x18", "x19", "x20", "x21", "x22"],
+      "as": ["item", "price"]
+    },
+    {
+      "calculate": "datum.item == 'x16' ? 'Apples' : datum.item == 'x17' ? 'Banana' : datum.item == 'x18' ? 'Oranges' : datum.item == 'x19' ? 'Tomato' : datum.item == 'x20' ? 'Potato' : datum.item == 'x21' ? 'Onion' : datum.item == 'x22' ? 'Lettuce' :null",
+      "as": "item_name"
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "city", "type": "nominal"},
+    "y": {"field": "item_name", "type": "nominal", "title": "Produce Basket"},
+    "color": {
+      "field": "price",
+      "type": "quantitative",
+      "title": "Price Range",
+      "scale": {"range": ["#386641", "#6a994e", "#a7c957", "#ecf39e"]}
+    },
+    "tooltip": [
+      {"field": "city", "type": "nominal"},
+      {"field": "item", "type": "nominal"},
+      {"field": "price", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}
