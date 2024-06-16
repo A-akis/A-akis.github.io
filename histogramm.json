@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df-continents.csv",
+    "format": {"type": "csv"}
+  },
+  "mark": "circle",
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 10},
+      "field": "x4",
+      "type": "quantitative",
+      "title": "Imported Beer Price"
+    },
+    "y": {
+      "bin": {"maxbins": 10},
+      "field": "x5",
+      "type": "quantitative",
+      "title": "Domestic Beer Price"
+    },
+    "size": {"aggregate": "count"},
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale": {"scheme": "pinkyellowgreen"},
+      "legend": {"title": "Counts"}
+    }
+  },
+  "config": {}
+}
