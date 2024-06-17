@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Pie Chart with percentage_tooltip",
+  "width": 300,
+  "height": 300,
+  "data": {
+    "values": [
+      {"Continent:": "Europa", "overall percent:": 311},
+      {"Continent:": "Africa", "overall percent:": 17},
+      {"Continent:": "North America", "overall percent:": 128},
+      {"Continent:": "Oceania", "overall percent:": 16},
+      {"Continent:": "South America", "overall percent:": 24},
+      {"Continent:": "Asia", "overall percent:": 126}
+    ]
+  },
+  "mark": {"type": "arc", "tooltip": true},
+  "encoding": {
+    "theta": {
+      "field": "overall percent:",
+      "type": "quantitative",
+      "stack": "normalize"
+    },
+    "color": {
+      "field": "Continent:",
+      "type": "nominal",
+      "scale": {
+        "range": [
+          "#ecf39e",
+          "#B2D06C",
+          "#386641",
+          "#6a994e",
+          "#F5F9CF",
+          "#BDD781"
+        ]
+      }
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 1000,
+  "height": 800,
+  "padding": {"left": 5, "right": 5, "top": 20, "bottom": 0},
+  "autosize": "none",
+  "signals": [
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2"},
+    {
+      "name": "gravityX",
+      "value": 0.2,
+      "bind": {"input": "range", "min": 0, "max": 1}
+    },
+    {
+      "name": "gravityY",
+      "value": 0.1,
+      "bind": {"input": "range", "min": 0, "max": 1}
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "values": [
+        {"category": "FR", "amount": 1.2},
+        {"category": "AU", "amount": 1.2},
+        {"category": "PT", "amount": 1.3},
+        {"category": "PL", "amount": 1.4},
+        {"category": "TR", "amount": 1.5},
+        {"category": "RO", "amount": 1.6},
+        {"category": "NL", "amount": 1.6},
+        {"category": "CN", "amount": 1.7},
+        {"category": "BR", "amount": 1.7},
+        {"category": "MX", "amount": 1.7},
+        {"category": "ES", "amount": 1.8},
+        {"category": "RU", "amount": 2.2},
+        {"category": "CA", "amount": 2.9},
+        {"category": "DE", "amount": 2.9},
+        {"category": "IT", "amount": 2.9},
+        {"category": "IN", "amount": 3.1},
+        {"category": "UK", "amount": 4.2},
+        {"category": "US", "amount": 8.2}
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "domain": {"data": "table", "field": "amount"},
+      "range": [100, 3000]
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "table", "field": "category"},
+      "range": {"scheme": "pinkyellowgreen"}
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "fill": {"scale": "color", "field": "category"},
+          "xfocus": {"signal": "cx"},
+          "yfocus": {"signal": "cy"}
+        },
+        "update": {
+          "size": {"signal": "pow(2 * datum.amount, 2)", "scale": "size"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1},
+          "tooltip": {"signal": "datum"}
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 100,
+          "static": false,
+          "forces": [
+            {
+              "force": "collide",
+              "iterations": 2,
+              "radius": {"expr": "sqrt(datum.size) / 2"}
+            },
+            {"force": "center", "x": {"signal": "cx"}, "y": {"signal": "cy"}},
+            {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
+            {"force": "y", "y": "yfocus", "strength": {"signal": "gravityY"}}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 15},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "black"},
+          "text": {"field": "datum.category"}
+        },
+        "update": {"x": {"field": "x"}, "y": {"field": "y"}}
+      }
+    }
+  ],
+  "config": {}
+}
