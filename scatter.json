@@ -18,7 +18,7 @@
           "Taxi Start Tariff",
           "Taxi 1km Price",
           "Taxi 1h of Wainting",
-          "Volkswagen Golf 1.4",
+          "Volkswagen Golf",
           "Toyota Corolla Sedan",
           "One Way Ticket"
         ],
@@ -45,6 +45,5 @@
       {"field": "x33", "type": "quantitative", "title": "Gasoline Price"}
     ]
   },
-  "title": "Gasoline Price vs. Other Transportation Fees",
   "config": {}
 }
