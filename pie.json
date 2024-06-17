@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Pie Chart with percentage_tooltip",
-  "width": 300,
-  "height": 300,
+  "width": 400,
+  "height": 400,
   "data": {
     "values": [
       {"Continent:": "Europa", "overall percent:": 311},

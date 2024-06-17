@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Food Prices Comparison",
+  "width": 600,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/A-akis/A-akis.github.io/main/df.csv",
     "format": {"type": "csv"}
