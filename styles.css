@@ -47,17 +47,17 @@ section {
 }
 
 h2 {
-    font-size: 1.5em;
+    font-size: 1.7em;
     margin-bottom: 10px;
     text-align: left;
 }
 h3 {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 10px;
     align-items: center;
 }
 p {
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-bottom: 10px;
     text-align: justify; 
 }
@@ -113,3 +113,6 @@ a:link {
     background-color: transparent;
     text-decoration: underline;
   }
+  .indented {
+    text-indent: 20px;
+}
