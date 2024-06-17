@@ -6,7 +6,7 @@
   "params": [
     {"name": "projection", "value": "equalEarth"},
     {
-      "name": "zoom",
+      "name": "Zoom",
       "value": "World",
       "bind": {
         "input": "select",
@@ -25,10 +25,10 @@
   "projection": {
     "type": {"expr": "projection"},
     "center": {
-      "expr": "zoom === 'Europe' ? [10, 50] : zoom === 'Asia' ? [100, 30] : zoom === 'Australia' ? [130, -25] : zoom === 'North America' ? [-100, 40] : zoom === 'Africa' ? [20, 0] : zoom === 'South America' ? [-60, -15] : [0, 0]"
+      "expr": "Zoom === 'Europe' ? [10, 50] : Zoom === 'Asia' ? [100, 30] : Zoom === 'Australia' ? [130, -25] : Zoom === 'North America' ? [-100, 40] : Zoom === 'Africa' ? [20, 0] : Zoom === 'South America' ? [-60, -15] : [0, 0]"
     },
     "scale": {
-      "expr": "zoom === 'Europe' ? 600 : zoom === 'Asia' ? 300 : zoom === 'Australia' ? 300 : zoom === 'North America' ? 300 : zoom === 'Africa' ? 400 : zoom === 'South America' ? 400 : 150"
+      "expr": "Zoom === 'Europe' ? 600 : Zoom === 'Asia' ? 300 : Zoom === 'Australia' ? 300 : Zoom === 'North America' ? 300 : Zoom === 'Africa' ? 400 : Zoom === 'South America' ? 400 : 150"
     }
   },
   "layer": [
