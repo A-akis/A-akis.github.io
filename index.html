@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cost of living</title>
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Global Cost of Living</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
      <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
@@ -13,91 +12,229 @@
 </head>
 <body>
     <header>
-        <h1>Cost of living</h1>
+        <h1>Global Cost of Living</h1>
     </header>
+        <div class="map-section">
+            <h3>Kis Anita-Klara</h3>
+        </div>  
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Chart 1: Map</h2>
+             <h2>Data Description</h2>
+             <p> 
+The main goal of this project is to analyze the <b>Cost of Living</b> in various cities around the world. By examining the data from Kaggle and adding additional geographic information, to identify trends and patterns in living expenses.
+<br><br>
+<b>Key modifications:</b>
+
+<ul>
+<li><b>Normalization: </b>Cleaned the data and deleted not unusable rows Python.</li>
+<li><b>Geographical Coordinates: </b> Generated latitude and longitude codes for each city.</li>
+<li><b>Continent Names: </b> Added continent names for every entry.</li>
+</ul>
+</p>
+<br>
+<br>
+<h2>Data dictionary for used columns:</h2>
+<br>
+                <table border="1">
+                 <thead>
+                  <tr>
+                     <th>Column</th>
+                     <th>Description</th>
+                    
+                 </tr>
+                </thead>
+                    <tbody>
+                     <tr>
+                        <td>city</td>
+                        <td>Name of the city</td>
+                    </tr>
+                        <td>country</td>
+                        <td>Name of the country</td>
+                    </tr>    
+                        <td>continent</td>
+                        <td>Name of the continent</td>
+                    </tr>
+                    <tr>
+                        <td>lat</td>
+                        <td>Latitude coordinate of the city</td>
+                    </tr>
+                    <tr>
+                        <td>lng</td>
+                        <td>Longitude coordinate of the city</td>
+                    </tr>
+                        <td>x3</td>
+                        <td>McMeal at McDonalds (or Equivalent Combo Meal) (USD)</td>
+                    </tr>
+                        <td>x4</td>
+                        <td>Domestic Beer (0.5 liter draught, in restaurants) (USD)</td>
+                    </tr>
+                        <td>x5</td>
+                        <td>Imported Beer (0.33 liter bottle, in restaurants) (USD)</td>
+                    </tr>
+                        <td>x7</td>
+                        <td>Coke(0.33 liter bottle, in restaurants) (USD)</td>
+                    </tr>
+                        <td>x8</td>
+                        <td>Water (0.33 liter bottle, in restaurants) (USD)</td>
+                    </tr>
+                        <td>x9</td>
+                        <td>Milk (regular), (1 liter) (USD)</td>
+                    </tr>
+                        <td>x10</td>
+                        <td>Loaf of Fresh White Bread (500g) (USD)</td>
+                    </tr>
+                        <td>x11</td>
+                        <td>Rice (white), (1kg) (USD)</td>
+                    </tr>
+                        <td>x12</td>
+                        <td>Eggs (regular) (12) (USD)</td>
+                    </tr>
+                        <td>x13</td>
+                        <td>Local Cheese (1kg) (USD)</td>
+                    </tr>
+                        <td>x14</td>
+                        <td>Chicken Fillets (1kg) (USD)</td>
+                    </tr>
+                        <td>x15</td>
+                        <td>Beef Round (1kg) (or Equivalent Back Leg Red Meat) (USD)</td>
+                    </tr>
+                        <td>x16</td>
+                        <td>Apples (1kg) (USD)</td>
+                    </tr>
+                        <td>x17</td>
+                        <td>Banana (1kg) (USD)</td>
+                    </tr>
+                        <td>x18</td>
+                        <td>Oranges (1kg) (USD)</td>
+                    </tr>
+                        <td>x19</td>
+                        <td>Tomato (1kg) (USD)</td>
+                    </tr>
+                        <td>x20</td>
+                        <td>Potato (1kg) (USD)</td>
+                    </tr>
+                        <td>x21</td>
+                        <td>Onion (1kg) (USD)</td>
+                    </tr>
+                        <td>x22</td>
+                        <td>Lettuce (1 head) (USD)</td>
+                    </tr>
+                        <td>x28</td>
+                        <td>One-way Ticket (Local Transport) (USD)</td>
+                    </tr>
+                        <td>x29</td>
+                        <td>Monthly Pass (Regular Price) (USD)</td>
+                    </tr>
+                        <td>x30</td>
+                        <td>Taxi Start (Normal Tariff) (USD)</td>
+                    </tr>
+                        <td>x31</td>
+                        <td>Taxi 1km (Normal Tariff) (USD)</td>
+                    </tr>
+                        <td>x32</td>
+                        <td>Taxi 1hour Waiting (Normal Tariff) (USD)</td>
+                    </tr>
+                        <td>x33</td>
+                        <td>Gasoline (1 liter) (USD)</td>
+                    </tr>
+                        <td>x34</td>
+                        <td>Volkswagen Golf 1.4 90 KW Trendline (Or Equivalent New Car) (USD)</td>
+                    </tr>
+                        <td>x35</td>
+                        <td>Toyota Corolla Sedan 1.6l 97kW Comfort (Or Equivalent New Car) (USD)</td>
+                    </tr>
+                        <td>x54</td>
+                        <td>Average Monthly Net Salary (After Tax) (USD)</td>
+                    </tr>
+                     </tbody>
+                 </table>
+
+        </div>
+     </section>
+     <hr>
+    <section>
+        <div class="map-section">
+            <h2>Projection Explorer Map Chart</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                The projection map chart displays cities as triangles where color indicates average net salary and size represents the cost of a McMeal.
+                 A dropdown menu allows focus on specific continents for detailed cost of living comparisons.
             </p>
         </div>
         <figure id="map1"></figure> 
     </section>
-
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Pie Chart of Country Counts grouped by Continent</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This pie chart illustrates the distribution of countries across continents,
+                 providing a clear visual representation of how many countries are situated in each continent.
             </p>
         </div>
         <figure id="map2"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Packed Bubble Chart of City Counts by Country</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This packed bubble chart represents each country with a bubble, where the size corresponds to the number of cities. The chart includes interactive features such as gravity in both X and Y axes,
+                 allowing bubbles to be moved for clearer comparisons.
             </p>
         </div>
         <figure id="map3"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Lasagna Plot Comparing Farm Produce Prices Across Cities </h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This lasagna plot features a dropdown menu to select specific countries, comparing prices of farm produce (apples, bananas, lettuce, onions, oranges, potatoes, and tomatoes) across cities within the chosen country.
             </p>
         </div>
         <figure id="map4"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Stacked Bar Chart of Market Item Prices by Country</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This stacked bar chart includes a dropdown menu to select specific countries, showcasing the total prices of market items (cheese, chicken, eggs, water, bread, milk, rice, round beef).
             </p>
         </div>
         <figure id="map5"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Bubble Plot Comparing Price Ranges of Domestic and Imported Beer</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This bubble plot compares the price ranges of domestic and imported beer across countries. Each bubble's size corresponds to the number of countries where that price range is observed, providing a visual comparison of beer prices globally.
             </p>
         </div>
         <figure id="map6"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Paintbrush Highlight Scatterplot Comparing Gasoline Prices and Transportation Costs</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This paintbrush highlight scatterplot allows users to select and compare the price of gasoline with various transportation fees, including bus ticket, monthly pass, taxi ride start price, cost per km of taxi ride, hourly taxi waiting price, Volkswagen car price, and Toyota car price, using a dropdown list.
             </p>
         </div>
         <figure id="map7"></figure> 
     </section>
+    <hr>
     <section>
         <div class="map-section">
-            <h2>Section 1: A basic chart</h2>
+            <h2>Box Plot Showing Coke Bottle Prices Across Countries</h2>
             <p> 
-                We've organised the page into sections, with each section containing a chart, title and a description. Here, we can describe the chart and give some context.
-                As a first example, we're using the basic chart from the previous session.
+                This box plot displays the maximum, minimum, and average prices of a coke bottle across different countries, providing a comparative view of pricing variability.
             </p>
         </div>
         <figure id="map8"></figure> 
     </section>
-
-   
     <script>
        
     var figure_1_spec = "map.json"; 
